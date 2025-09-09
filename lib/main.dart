@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notesapp/presentation/views/home_view.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('notes_box');
+  runApp(const NotesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NotesApp extends StatelessWidget {
+  const NotesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
