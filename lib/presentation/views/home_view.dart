@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/presentation/widgets/bottom_sheet.dart';
 import 'package:notesapp/presentation/widgets/custom_appbar.dart';
 import 'package:notesapp/presentation/views/notes_view_body.dart';
 
@@ -21,7 +22,15 @@ class _HomeViewState extends State<HomeView> {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        elevation: 3,
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) => const CustomBottomSheet(),
+          );
+        },
         child: Icon(Icons.add),
       ),
     );
