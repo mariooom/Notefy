@@ -1,40 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/presentation/widgets/custom_icon.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
+  const CustomAppbar({
+    super.key,
+    required this.title,
+    required this.iconData,
+  });
+  final String title;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 80,
-        ),
-        Text(
-          'Notes',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        const Spacer(),
-        Container(
-          height: 46,
-          width: 46,
-          decoration: BoxDecoration(
-            // ignore: deprecated_member_use
-            color: Colors.white.withOpacity(0.07),
-            borderRadius: BorderRadius.circular(16),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(3.0, 20, 3, 0),
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
-          child: Center(
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                size: 26,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        )
-      ],
+          const Spacer(),
+          CustomIcon(iconData: iconData)
+        ],
+      ),
     );
   }
 }

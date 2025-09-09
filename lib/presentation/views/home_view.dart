@@ -17,7 +17,10 @@ class _HomeViewState extends State<HomeView> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          CustomAppbar(),
+          CustomAppbar(
+            title: 'Notefy',
+            iconData: Icons.search,
+          ),
           NotesViewBody(),
         ]),
       ),
@@ -29,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-              return  CustomBottomSheet();
+                return CustomBottomSheet();
               });
         },
         child: Icon(Icons.add),

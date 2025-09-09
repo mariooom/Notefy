@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/constants.dart';
+import 'package:notesapp/presentation/widgets/custom_textfield.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({
@@ -26,31 +27,24 @@ class CustomBottomSheet extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: const Text('Add Note'),
                 ),
-                TextField(
-                  cursorColor: kPrimaryColor,
+                CustomTextfield(
+                  hint: 'Title',
                   maxLines: 1,
-                  decoration: const InputDecoration(
-                      hintText: 'Title',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: kPrimaryColor))),
                 ),
                 SizedBox(height: 10),
-                TextField(
-                  autocorrect: true,
-                  //expands: true,
-                  maxLines: 6,
-                  cursorColor: kPrimaryColor,
-                  decoration: const InputDecoration(
-                      focusColor: kPrimaryColor,
-                      hintText: 'Content',
-                      border: OutlineInputBorder()),
+                CustomTextfield(
+                  hint: 'Content',
+                  maxLines: 5,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 MaterialButton(
                     color: kPrimaryColor,
                     onPressed: () {
-                      
                       Navigator.pop(context);
                     },
+                    minWidth: 350,
                     child: const Text('Save')),
               ]),
             ),
