@@ -26,10 +26,11 @@ class _HomeViewState extends State<HomeView> {
         foregroundColor: Colors.white,
         elevation: 3,
         onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) => const CustomBottomSheet(),
-          );
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+              return  CustomBottomSheet();
+              });
         },
         child: Icon(Icons.add),
       ),
