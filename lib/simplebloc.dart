@@ -9,6 +9,8 @@ class SimplleBlocObserver implements BlocObserver {
 
   @override
   void onClose(BlocBase bloc) {
+        debugPrint('create =${bloc}');
+
     // TODO: implement onClose
   }
 
