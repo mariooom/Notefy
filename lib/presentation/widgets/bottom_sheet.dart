@@ -7,7 +7,7 @@ import 'package:notesapp/presentation/widgets/add_notes_form.dart';
 
 // ignore: must_be_immutable
 class CustomBottomSheet extends StatelessWidget {
-  const CustomBottomSheet({Key? key}) : super(key: key);
+  const CustomBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
