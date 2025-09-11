@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_bloc: ^9.1.1
   hive_flutter: ^1.1.0
+  path_provider: ^2.0.0
   hive: ^2.2.3
 
   # firebase_core: ^4.1.0
@@ -50,7 +51,7 @@ dev_dependencies:
   # hive_genrator gnenrating code for hive package
   # hive main package
   # hive_flutter extension for flutter framework
-  
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
