@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/core/cubit/add_note_cubit/add_notes_cubit.dart';
+import 'package:notesapp/core/cubit/add_note_cubit/add_notes_state.dart';
 import 'package:notesapp/core/model/note_model.dart';
 import 'package:notesapp/presentation/widgets/custom_botton.dart';
 import 'package:notesapp/presentation/widgets/custom_textfield.dart';
@@ -55,16 +56,27 @@ class _AddNotesFormState extends State<AddNotesForm> {
               SizedBox(
                 height: 5,
               ),
-              CustomBotton(
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    var noteModel = Notes(title: title!, subTitle: subTitle!, date: DateTime.now().toString(), color: Colors.blue.value);
-                    BlocProvider.of<AddNotesCubit>(context).addnotes(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
+              BlocBuilder<AddNotesCubit, AddNotesState>(
+                builder: (context, state) {
+                  return CustomBotton(
+                    isLoading: state is AddNotesLoading ? true : false,
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        var noteModel = Notes(
+                            title: title!,
+                            subTitle: subTitle!,
+                            date: DateTime.now().toString(),
+                            color: Colors.blue.value);
+                        BlocProvider.of<AddNotesCubit>(context)
+                            .addnotes(noteModel);
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                      //Navigator.pop(context);
+                    },
+                  );
                 },
               ),
             ]),
