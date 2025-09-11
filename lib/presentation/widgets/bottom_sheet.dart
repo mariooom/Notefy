@@ -46,6 +46,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
         child: Padding(
           padding: const EdgeInsets.all(19.0),
           child: Form(
+            key: formKey,
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
