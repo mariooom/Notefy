@@ -21,6 +21,9 @@ class CustomBotton extends StatelessWidget {
                   color: Colors.white,
                 ),
               )
-            : const Text('Save'));
+            : const Text(
+                'Save',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ));
   }
 }

@@ -1,10 +1,11 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notesapp/core/cubit/add_note_cubit/add_notes_cubit.dart';
-import 'package:notesapp/core/cubit/add_note_cubit/add_notes_state.dart';
 import 'package:notesapp/core/model/note_model.dart';
 import 'package:notesapp/presentation/widgets/custom_botton.dart';
 import 'package:notesapp/presentation/widgets/custom_textfield.dart';
+import 'package:notesapp/core/cubit/add_note_cubit/add_notes_cubit.dart';
+import 'package:notesapp/core/cubit/add_note_cubit/add_notes_state.dart';
 
 class AddNotesForm extends StatefulWidget {
   const AddNotesForm.AddNotesForm({Key? key}) : super(key: key);
@@ -17,6 +18,9 @@ class _AddNotesFormState extends State<AddNotesForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
+  //Date Format
+  String formatedDate =
+      DateFormat.yMMMd('en_US').add_jm().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,14 @@ class _AddNotesFormState extends State<AddNotesForm> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(19.0),
+          padding: EdgeInsets.only(
+            left: 19.0,
+            right: 19,
+            top: 19,
+            bottom: MediaQuery.of(context)
+                .viewInsets
+                .bottom, //to elevate bottom sheet when the keyboard shows
+          ),
           child: Form(
             key: formKey,
             child: Column(children: [
@@ -44,9 +55,11 @@ class _AddNotesFormState extends State<AddNotesForm> {
                 onSaved: (value) {
                   title = value;
                 },
+                
               ),
               SizedBox(height: 10),
               CustomTextfield(
+               
                 hint: 'Content',
                 maxLines: 5,
                 onSaved: (value) {
@@ -59,22 +72,24 @@ class _AddNotesFormState extends State<AddNotesForm> {
               BlocBuilder<AddNotesCubit, AddNotesState>(
                 builder: (context, state) {
                   return CustomBotton(
-                    isLoading: state is AddNotesLoading ? true : false,
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
+
+                        var formatedDate =
+                            DateFormat.yMEd().format(DateTime.now());
                         var noteModel = Notes(
-                            title: title!,
-                            subTitle: subTitle!,
-                            date: DateTime.now().toString(),
-                            color: Colors.blue.value);
+                          title: title!,
+                          subTitle: subTitle!,
+                          date: formatedDate,
+                          color: Colors.blue.value,
+                        );
                         BlocProvider.of<AddNotesCubit>(context)
                             .addnotes(noteModel);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
                       }
-                      //Navigator.pop(context);
                     },
                   );
                 },
