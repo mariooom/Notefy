@@ -60,6 +60,7 @@ class _EditViewBodyState extends State<EditViewBody> {
           const SizedBox(height: 10),
           CustomTextfield(
             hint: widget.notes.title,
+            
             maxLines: 1,
             onChanged: (value) {
               title = value;
