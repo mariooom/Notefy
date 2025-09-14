@@ -18,7 +18,7 @@ class CustomIcon extends StatelessWidget {
       child: Center(
         child: IconButton(
           onPressed: onPressed,
-          icon: Icon(iconData),
+          icon: Icon(iconData, color: Colors.white),
         ),
       ),
     );
