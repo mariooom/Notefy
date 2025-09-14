@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/core/model/note_model.dart';
+import 'package:notesapp/presentation/widgets/colors_list_view.dart';
 import 'package:notesapp/presentation/widgets/custom_botton.dart';
 import 'package:notesapp/presentation/widgets/custom_textfield.dart';
 import 'package:notesapp/core/cubit/add_note_cubit/add_notes_cubit.dart';
@@ -55,11 +56,9 @@ class _AddNotesFormState extends State<AddNotesForm> {
                 onSaved: (value) {
                   title = value;
                 },
-                
               ),
               SizedBox(height: 10),
               CustomTextfield(
-               
                 hint: 'Content',
                 maxLines: 5,
                 onSaved: (value) {
@@ -69,6 +68,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
               SizedBox(
                 height: 5,
               ),
+              ColorsList(),
               BlocBuilder<AddNotesCubit, AddNotesState>(
                 builder: (context, state) {
                   return CustomBotton(
@@ -101,3 +101,4 @@ class _AddNotesFormState extends State<AddNotesForm> {
     );
   }
 }
+

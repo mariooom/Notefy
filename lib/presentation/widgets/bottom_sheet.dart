@@ -14,7 +14,7 @@ class CustomBottomSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNotesCubit(),
       child: SizedBox(
-        height: 900,
+        height: 1000,
         child: SingleChildScrollView(
             child: BottomSheet(
           onClosing: () {},
