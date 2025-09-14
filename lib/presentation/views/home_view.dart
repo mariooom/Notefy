@@ -14,6 +14,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
@@ -25,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         elevation: 3,
         onPressed: () {
